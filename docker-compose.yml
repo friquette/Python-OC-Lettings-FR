@@ -1,0 +1,11 @@
+version: 'Compose specification'
+services:
+  app:
+    build: .
+    volumes:
+      - .:/django-app
+    ports:
+      - 8000:8000
+    image: app:django-app
+    container_name: django_container
+    command: python manage.py runserver 0.0.0.0:8000
