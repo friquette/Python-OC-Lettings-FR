@@ -1,0 +1,34 @@
+version: 2.1
+
+orbs:
+  python: circleci/python@2.0.3
+
+jobs:
+  lint-and-test:
+    executor: python/default
+    docker:
+      - image: cimg/python: 3.9.13
+    steps:
+      - checkout
+      - python/install-packages:
+        pip-dependency-file: requirements.txt
+        pkg-manager: pip
+      - setup_reomte_docker:
+        docker_layer_caching: true
+      - run:
+        name: Run tests
+        command: pytest
+        env:
+          DJANGO_SECRET_KEY: $DJANGO_SECRET_KEY
+      - run:
+        name: Flake8
+        command: flake8 --config='./setup.cfg'
+
+workflows:
+  dev:
+    jobs:
+      - lint-and-test:
+        filters:
+          branches:
+            ignore:
+              - master
