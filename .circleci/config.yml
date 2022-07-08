@@ -10,15 +10,15 @@ jobs:
     steps:
       - checkout
       - python/install-packages:
-        pkg-manager: pip
+          pkg-manager: pip
       - run:
-        name: Run tests
-        command: pytest
-        env:
-          DJANGO_SECRET_KEY: $DJANGO_SECRET_KEY
+          name: Run tests
+          command: pytest
+          env:
+            DJANGO_SECRET_KEY: $DJANGO_SECRET_KEY
       - run:
-        name: Flake8
-        command: flake8 --config='./setup.cfg'
+          name: Flake8
+          command: flake8 --config='./setup.cfg'
 
 workflows:
   dev:
