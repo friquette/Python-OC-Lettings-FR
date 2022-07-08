@@ -7,7 +7,7 @@ jobs:
   lint-and-test:
     executor: python/default
     docker:
-      - image: cimg/python: 3.9.13
+      - image: cimg/python:3.9.13
     steps:
       - checkout
       - python/install-packages:
