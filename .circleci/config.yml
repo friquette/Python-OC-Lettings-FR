@@ -2,6 +2,7 @@ version: 2.1
 
 orbs:
   python: circleci/python@2.0.3
+  orbs: circleci/docker@2.1.2
 
 jobs:
   lint-and-test:
@@ -11,6 +12,8 @@ jobs:
       - checkout
       - python/install-packages:
           pkg-manager: pip
+      - setup_remote_docker:
+          docker_layer_caching: true
       - run:
           name: Run tests
           command: pytest
