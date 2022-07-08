@@ -5,16 +5,12 @@ orbs:
 
 jobs:
   lint-and-test:
-    executor: python/default
     docker:
-      - image: cimg/python:3.9.13
+      - image: cimg/python:3.10.2
     steps:
       - checkout
       - python/install-packages:
-        pip-dependency-file: requirements.txt
         pkg-manager: pip
-      - setup_reomte_docker:
-        docker_layer_caching: true
       - run:
         name: Run tests
         command: pytest
@@ -27,8 +23,4 @@ jobs:
 workflows:
   dev:
     jobs:
-      - lint-and-test:
-        filters:
-          branches:
-            ignore:
-              - master
+      - lint-and-test
