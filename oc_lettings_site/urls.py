@@ -5,7 +5,7 @@ from . import views
 
 
 def test(request):
-    division = 1 / 0
+    1 / 0
 
 
 urlpatterns = [
