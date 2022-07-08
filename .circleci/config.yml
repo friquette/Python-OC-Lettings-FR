@@ -12,9 +12,8 @@ jobs:
       - checkout
       - python/install-packages:
           pkg-manager: pip
-      - run:
-          name: docker-compose
-          command: docker-compose up
+      - setup_remote_docker:
+          docker_layer_caching: true
       - run:
           name: Flake8
           command: flake8 --config='./setup.cfg'
