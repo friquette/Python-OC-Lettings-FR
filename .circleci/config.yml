@@ -15,7 +15,7 @@ jobs:
           name: Run tests
           command: pytest
           env:
-            DJANGO_SECRET_KEY: $DJANGO_SECRET_KEY
+            SECRET_KEY: $DJANGO_SECRET_KEY
       - run:
           name: Flake8
           command: flake8 --config='./setup.cfg'
