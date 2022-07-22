@@ -6,11 +6,13 @@ orbs:
 
 jobs:
   lint-and-test:
+    executor: python/default
     docker:
-      - image: friquette/python-oc-lettings:django-app
+      - image: cimg/python:3.9.7
     steps:
       - checkout
       - python/install-packages:
+          pip-dependency-file: requirements.txt
           pkg-manager: pip
       - setup_remote_docker:
           docker_layer_caching: true
