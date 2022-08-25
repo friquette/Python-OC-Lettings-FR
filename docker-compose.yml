@@ -1,4 +1,4 @@
-version: 'Compose specification'
+version: '3.0'
 services:
   app:
     build: .
@@ -10,17 +10,5 @@ services:
     container_name: django_container
     command: >
       sh -c "
-        python manage.py loaddata db.json &&
         python manage.py migrate &&
         python manage.py runserver --settings=oc_lettings_site.settings 0.0.0.0:8000"
-    depends_on:
-      - db
-  db:
-    image: postgres
-    volumes:
-      - /data/db:/var/lib/postgresql/data
-    environment:
-      - POSTGRES_DB=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-    container_name: postgres_db
