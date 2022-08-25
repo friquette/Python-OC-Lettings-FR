@@ -6,7 +6,7 @@ services:
       - .:/django-app
     ports:
       - 8000:8000
-    image: app:django-app
+    image: python-oc-lettings:django-app
     container_name: django_container
     command: >
       sh -c "
