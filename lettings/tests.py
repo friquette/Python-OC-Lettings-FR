@@ -24,9 +24,6 @@ def create_letting(db):
 
 @pytest.mark.django_db
 def test_lettings_index_view():
-    from django.conf import settings
-
-    settings.DATABASES['default']['NAME'] = 'copied_db'
     client = Client()
     uri = reverse('lettings:lettings_index')
     resp = client.get(uri)
